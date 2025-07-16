@@ -2,14 +2,11 @@ package com.sweetshop;
 
 
 public class Sweet {
-    // attributes of the sweet object
-    // unique id ,name ,category,price,quantity
     private int id;
     private String name;
     private String category;
     private double price;
     private int quantity;
-     // constructor to initialize the sweet object
     public Sweet(int id, String name, String category, double price, int quantity) {
         this.id = id;
         this.name = name;
