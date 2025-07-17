@@ -91,6 +91,12 @@ class SweetShopServiceTest{
        ,()->shop.purchaseSweet(1,21));
 
    }
+   @Test
+    void testRestockSweet(){
+        shop.addSweet(new Sweet(1,"Laddoo","Candy",10.0,20));
+        shop.restockSweet(1,30);
+       assertEquals(50,shop.viewSweets().get(0).getQuantity());
 
+   }
 }
 
