@@ -1,8 +1,6 @@
 package com.sweetshop;
 
 import java.util.*;
-import java.util.stream.Collectors;
-
 public class SweetShop {
    // Map to store the Sweets
     private Map<Integer, Sweet> sweets;
@@ -18,10 +16,12 @@ public class SweetShop {
         }
         sweets.put(sweet.getId(), sweet);
     }
+
     // method that return the  Number of sweets in the  store
     public List<Sweet> viewSweets() {
         return new ArrayList<>(sweets.values());
     }
+
     //Method to delete sweet from the store if conatins that sweet id
     public void deleteSweet(int id){
         if(!sweets.containsKey(id)){
@@ -65,6 +65,14 @@ public class SweetShop {
         if (sweet == null) throw new IllegalArgumentException("Sweet not found");
         if (sweet.getQuantity() < quantity) throw new IllegalArgumentException("Not enough stock");
         sweet.setQuantity(sweet.getQuantity() - quantity);
+    }
+    //Restock the stock
+    public void restockSweet(int id, int quantity) {
+        Sweet sweet = sweets.get(id);
+        if (sweet == null) {
+            throw new IllegalArgumentException("Sweet not found");
+        }
+        sweet.setQuantity(sweet.getQuantity() + quantity);
     }
 
 }
