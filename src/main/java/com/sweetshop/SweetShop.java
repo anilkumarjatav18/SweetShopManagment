@@ -22,5 +22,12 @@ public class SweetShop {
     public List<Sweet> viewSweets() {
         return new ArrayList<>(sweets.values());
     }
+    //Method to delete sweet from the store if conatins that sweet id
+    public void deleteSweet(int id){
+        if(!sweets.containsKey(id)){
+            throw new IllegalArgumentException("sweet not found");
+        }
+        sweets.remove(id);
+    }
 
 }

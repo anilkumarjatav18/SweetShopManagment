@@ -26,6 +26,14 @@ class SweetShopServiceTest{
         // expected that  number of items should be to
         assertEquals(2, shop.viewSweets().size());
     }
+    @Test
+    void testDeleteSweet() {
+        Sweet sweet = new Sweet(1, "Ladoo", "Candy", 10.0, 50);
+        shop.addSweet(sweet);
+        shop.deleteSweet(1);
+        assertEquals(0, shop.viewSweets().size());
+    }
+
 
 
 
