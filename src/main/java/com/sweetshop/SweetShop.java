@@ -29,5 +29,42 @@ public class SweetShop {
         }
         sweets.remove(id);
     }
+    //method to return the list of the item search By name
+    public List<Sweet> searchByName(String name){
+        List<Sweet>result=new ArrayList<>(); // store the result
+        for(Sweet sweet:sweets.values()) {
+            if (sweet.getName().toLowerCase().contains(name.toLowerCase())) {
+                result.add(sweet);
+            }
+        }
+        return result;
+
+    }
+    public List<Sweet> searchByCategoty(String category){
+        List<Sweet>resultByCategory=new ArrayList<>(); // store the result
+        for(Sweet sweet:sweets.values()) {
+            if (sweet.getCategory().toLowerCase().contains(category.toLowerCase())) {
+                resultByCategory.add(sweet);
+            }
+        }
+        return resultByCategory;
+
+    }
+    public List<Sweet> searchByPriceRange(double minimumPrice,double maximumPrice) {
+        List<Sweet> result = new ArrayList<>();
+        for (Sweet sweet : sweets.values()) {
+            if (sweet.getPrice()>minimumPrice && sweet.getPrice()<maximumPrice) {
+                result.add(sweet);
+            }
+        }
+        return result;
+    }
+    //purchase Sweet
+    public void purchaseSweet(int id, int quantity) {
+        Sweet sweet = sweets.get(id); // first get the sweet by id
+        if (sweet == null) throw new IllegalArgumentException("Sweet not found");
+        if (sweet.getQuantity() < quantity) throw new IllegalArgumentException("Not enough stock");
+        sweet.setQuantity(sweet.getQuantity() - quantity);
+    }
 
 }
