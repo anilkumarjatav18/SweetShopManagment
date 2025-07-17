@@ -48,11 +48,32 @@ class SweetShopServiceTest{
         assertTrue(sweets.contains(sweet1), "Sweets list should contain sweet1");
         assertTrue(sweets.contains(sweet2), "Sweets list should contain sweet2");
     }
+    @Test
+    void testSearchByName(){
+        shop.addSweet(new Sweet(1,"Laddoo","candy",10.0,30));
+        List<Sweet>result=shop.searchByName("laddo");
+        assertEquals(1,result.size());
 
-
-
-
-
+    }
+    //test  for searchBy category
+    @Test
+    void testSearchByCategory(){
+        shop.addSweet(new Sweet(1,"Laddoo","candy",10.0,20));
+        shop.addSweet(new Sweet(2,"Barfi","candy",10.0,20));
+        shop.addSweet(new Sweet(3,"Jalebi","candy",10.0,20));
+        //result store all the sweet of candy category
+        List<Sweet>result=shop.searchByCategoty("candy");
+        assertEquals(3,result.size());
+    }
+    @Test
+    void testSearchByPriceRange(){
+        shop.addSweet(new Sweet(1,"Laddoo","candy",10.0,20));
+        shop.addSweet(new Sweet(2,"Barfi","candy",15.0,20));
+        shop.addSweet(new Sweet(3,"Jalebi","candy",19.0,20));
+        //result store all the sweet of candy category
+        List<Sweet>result=shop.searchByPriceRange(10.0,20.0);
+        assertEquals(2,result.size());
+    }
 
 }
 
