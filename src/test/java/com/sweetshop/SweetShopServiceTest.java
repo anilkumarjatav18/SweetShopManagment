@@ -33,6 +33,21 @@ class SweetShopServiceTest{
         shop.deleteSweet(1);
         assertEquals(0, shop.viewSweets().size());
     }
+    @Test
+    void testViewSweets_whenSweetsAdded_shouldReturnAllSweets() {
+        SweetShop shop = new SweetShop();
+        Sweet sweet1 = new Sweet(1, "Ladoo", "Candy", 10.0, 50);
+        Sweet sweet2 = new Sweet(2, "Barfi", "Pastry", 20.0, 30);
+
+        shop.addSweet(sweet1);
+        shop.addSweet(sweet2);
+
+        List<Sweet> sweets = shop.viewSweets();
+
+        assertEquals(2, sweets.size(), "Sweets list should contain 2 sweets");
+        assertTrue(sweets.contains(sweet1), "Sweets list should contain sweet1");
+        assertTrue(sweets.contains(sweet2), "Sweets list should contain sweet2");
+    }
 
 
 
