@@ -74,6 +74,14 @@ class SweetShopServiceTest{
         List<Sweet>result=shop.searchByPriceRange(10.0,20.0);
         assertEquals(2,result.size());
     }
+    @Test
+    void testPurchaseSweetSuccess(){
+        shop.addSweet(new Sweet(1,"Laddoo","candy",10.0,20));
+        shop.addSweet(new Sweet(2,"Barfi","candy",17.0,20));
+        shop.addSweet(new Sweet(3,"Jalebi","candy",19.0,20));
+        shop.purchaseSweet(1,10);
+        assertEquals(10,shop.viewSweets().get(0).getQuantity());
+    }
 
 
 }
