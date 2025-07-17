@@ -82,7 +82,15 @@ class SweetShopServiceTest{
         shop.purchaseSweet(1,10);
         assertEquals(10,shop.viewSweets().get(0).getQuantity());
     }
+   @Test
+    void testPurchaseSweetInsufficientStock(){
+       shop.addSweet(new Sweet(1,"Laddoo","candy",10.0,20));
+//       shop.purchaseSweet(1,21);
 
+       assertThrows(IllegalArgumentException.class
+       ,()->shop.purchaseSweet(1,21));
+
+   }
 
 }
 
