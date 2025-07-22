@@ -1,10 +1,7 @@
 package com.sweetshop;
-
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class SweetShopServiceTest{
@@ -25,6 +22,16 @@ class SweetShopServiceTest{
         shop.addSweet(sweet1);
         // expected that  number of items should be to
         assertEquals(2, shop.viewSweets().size());
+    }
+    @Test
+    void testAlreadyExist(){
+        Sweet sweet1=new Sweet(1, "Ladoo", "Candy", 10.0, 50);
+        Sweet sweet2=new Sweet(2, "Ladoo", "Candy", 10.0, 50);
+
+        shop.addSweet(sweet1);
+        IllegalArgumentException exception=assertThrows(IllegalArgumentException.class,
+                ()->shop.addSweet(sweet1));
+        assertTrue(exception.getMessage().contains("Sweet ID already exists"));
     }
     @Test
     void testDeleteSweet() {
